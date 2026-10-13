@@ -1,11 +1,20 @@
 /* Custom properties */
 :root {
     --right-side-background-color : white;
-    --brand-font-size: 10vw;
+    --brand-font-size: 8vw;
     --input-background-color: white;
     --input-focus-color: #BF238B;
+    --left-size-proportion:50vw;
 }
 
+@font-face {
+  font-family: Partyline;
+  src: url(./fonts/partyline.ttf);
+}
+
+h1 {
+    text-align: center;
+}
 * {
     margin: 0px;
     padding: 0px;
@@ -25,32 +34,163 @@
     background-position: center;
     background-size: auto;
     background-repeat: no-repeat;
-    width: 45vw;
+    width: var(--left-size-proportion);
     align-items: center;
 }
 
 .brand {
     text-align: center;
-    padding-top: 10%;
-    font-size: var(--brand-font-size)
+    padding-top: 30%;
+    font-size: var(--brand-font-size);
+    font-family: Partyline;
+}
+
+.footer {
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: var(--left-size-proportion);
+  padding: 10px;
+  font-size: 20px;
+}
+
+.github-logo {
+    height: 20px;
+    width: 20px;
+    fill: black;    
 }
 
 /* Right side styling */
 .right_side {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: var(--right-side-background-color);
-    justify-content: center;
+    justify-content: space-around;
+    align-items:center;
+    margin-left: 15%;
+    margin-right: 15%;
 }
 
 .form_container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 0px 5% 0px 5%;
+}
+
+.input_section {
+    display: flex;
     flex-flow: column;
-    gap: 20px;;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: 2;
+    border-radius: 10px;
+    gap: 10px;
+    text-align: center;
+    padding: 1.2rem 2vw 3rem 2vw;
+}
+
+.input_box {
+    display: flex;
+    flex-direction: column;  
+    padding: 5px;
+    background: white;
+    color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 black;
 }
 
 input {
-    background-color: var(--input-background-color);
-    border: 1px solid black;
-    border-radius: 3px;
+    border: 0;
+    text-align: center;
+}
+
+/* heartbox */
+.heart-container {
+  --heart-color: rgb(255, 91, 137);
+  position: relative;
+  width: 50px;
+  height: 50px;
+  transition: 0.3s;
+  padding:10px;
+}
+
+.heart-container .checkbox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 20;
+  cursor: pointer;
+}
+
+.heart-container .svg-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart-container .svg-outline,
+.heart-container .svg-filled {
+  fill: var(--heart-color);
+  position: absolute;
+}
+
+.heart-container .svg-filled {
+  animation: keyframes-svg-filled 1s;
+  display: none;
+}
+
+.heart-container .svg-celebrate {
+  position: absolute;
+  animation: keyframes-svg-celebrate 0.5s;
+  animation-fill-mode: forwards;
+  display: none;
+  stroke: var(--heart-color);
+  fill: var(--heart-color);
+  stroke-width: 2px;
+}
+
+.heart-container .checkbox:checked ~ .svg-container .svg-filled {
+  display: block;
+}
+
+.heart-container .checkbox:checked ~ .svg-container .svg-celebrate {
+  display: block;
+}
+
+@keyframes keyframes-svg-filled {
+  0% {
+    transform: scale(0);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+    filter: brightness(1.5);
+  }
+}
+
+@keyframes keyframes-svg-celebrate {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+    display: none;
+  }
 }
