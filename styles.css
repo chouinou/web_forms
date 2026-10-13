@@ -1,0 +1,56 @@
+/* Custom properties */
+:root {
+    --right-side-background-color : white;
+    --brand-font-size: 10vw;
+    --input-background-color: white;
+    --input-focus-color: #BF238B;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.full_page {
+    display : flex;
+    flex-flow: row;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Left side styling */
+.left_side {
+    background-image: url(./assets/background.jpg);
+    background-position: center;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 45vw;
+    align-items: center;
+}
+
+.brand {
+    text-align: center;
+    padding-top: 10%;
+    font-size: var(--brand-font-size)
+}
+
+/* Right side styling */
+.right_side {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--right-side-background-color);
+    justify-content: center;
+}
+
+.form_container {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;;
+}
+
+input {
+    background-color: var(--input-background-color);
+    border: 1px solid black;
+    border-radius: 3px;
+}
